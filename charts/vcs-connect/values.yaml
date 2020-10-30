@@ -56,3 +56,23 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+externalConfig:
+  secretRef:
+    name: ""
+
+provider: ""
+  # Override the provider integration. Required parameter when using an external config.
+
+config:
+  github: {}
+    # baseURL: ''
+    # uploadURL: ''
+    # username: ''
+    # accessToken: ''
+    # organizations: []
+  gitlab: {}
+    # baseURL: ''
+    # username: ''
+    # accessToken: ''
+    # groups: []
