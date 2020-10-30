@@ -1,0 +1,64 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "vcs-connect.fullname" . }}
+  labels:
+    {{- include "vcs-connect.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  jobTemplate:
+    metadata:
+      lables:
+        {{- include "vcs-connect.labels" . | nindent 8 }}
+    spec:
+      template:
+        metadata:
+          labels:
+            {{- include "vcs-connect.labels" . | nindent 12 }}
+        spec:
+          restartPolicy: OnFailure
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ include "vcs-connect.serviceAccountName" . }}
+          securityContext:
+            {{- toYaml .Values.podSecurityContext | nindent 12 }}
+          containers:
+            - name: {{ .Chart.Name }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+              envFrom:
+                {{- if .Values.externalConfig.secretRef.name }}
+                - secretRef:
+                    name: {{ .Values.externalConfig.secretRef.name }}
+                {{- else }}
+                - secretRef:
+                    name: {{ include "vcs-connect.fullname" . }}
+                {{- end }}
+              args:
+                {{- if .Values.provider }}
+                - {{ .Values.provider }}
+                {{- else if .Values.config.github }}
+                - github
+                {{- else if .Values.config.gitlab }}
+                - gitlab
+                {{- else }}
+                {{- fail "Could not determine provider. Did you forget to set it?" -}}
+                {{- end }}
+          {{- with .Values.nodeSelector }}
+          nodeSelector:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.affinity }}
+          affinity:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.tolerations }}
+          tolerations:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
