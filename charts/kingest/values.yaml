@@ -1,11 +1,11 @@
-# Default values for effx.
+# Default values for kingest.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: effx/kingest
+  repository: kingest/kingest
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []

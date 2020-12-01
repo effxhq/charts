@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "effx.fullname" . }}
+  name: {{ include "kingest.fullname" . }}
   labels:
-    {{- include "effx.labels" . | nindent 4 }}
+    {{- include "kingest.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "effx.selectorLabels" . | nindent 6 }}
+      {{- include "kingest.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "effx.selectorLabels" . | nindent 8 }}
+        {{- include "kingest.selectorLabels" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ include "effx.serviceAccountName" . }}
+      serviceAccountName: {{ include "kingest.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -35,7 +35,7 @@ spec:
             - name: EFFX_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "effx.fullname" . }}
+                  name: {{ include "kingest.fullname" . }}
                   key: api-key
             - name: ENABLE_KUBERNETES_SCALE_EVENTS
               value: {{ .Values.enablements.scaleEvents | quote }}
