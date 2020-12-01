@@ -1,6 +1,12 @@
 apiVersion: v2
+type: application
 name: vcs-connect
 description: Connect version control systems to effx.com
-type: application
-version: 0.1.0
+home: https://effx.com
+sources:
+  - https://github.com/effxhq/charts
+maintainers:
+- name: Mya Pitzeruse
+  email: mya@effx.com
+version: 0.1.1
 appVersion: 0.1.0
