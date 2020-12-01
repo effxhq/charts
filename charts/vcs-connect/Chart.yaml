@@ -8,5 +8,6 @@ sources:
 maintainers:
 - name: Mya Pitzeruse
   email: mya@effx.com
+  url: https://effx.com
 version: 0.1.1
 appVersion: 0.1.0
