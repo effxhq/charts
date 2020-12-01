@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: kingest/kingest
+  repository: effx/kingest
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
