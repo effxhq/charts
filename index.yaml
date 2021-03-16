@@ -20,6 +20,23 @@ entries:
     version: 0.1.2
   vcs-connect:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2021-03-16T18:23:41.753680339Z"
+    description: Connect version control systems to effx.com
+    digest: 71edef95710cb265820eb9f3d0e947e798c4254cbfc8479011b291611db6279a
+    home: https://effx.com
+    maintainers:
+    - email: mya@effx.com
+      name: Mya Pitzeruse
+      url: https://effx.com
+    name: vcs-connect
+    sources:
+    - https://github.com/effxhq/charts
+    type: application
+    urls:
+    - https://github.com/effxhq/charts/releases/download/vcs-connect-0.1.3/vcs-connect-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 0.1.0
     created: "2020-12-01T22:36:29.89922415Z"
     description: Connect version control systems to effx.com
