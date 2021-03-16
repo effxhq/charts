@@ -6,8 +6,8 @@ home: https://effx.com
 sources:
   - https://github.com/effxhq/charts
 maintainers:
-- name: Mya Pitzeruse
-  email: mya@effx.com
-  url: https://effx.com
-version: 0.1.2
-appVersion: 0.1.0
+  - name: Mya Pitzeruse
+    email: mya@effx.com
+    url: https://effx.com
+version: 0.1.3
+appVersion: 0.0.3
