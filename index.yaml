@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   cluster-agent:
   - apiVersion: v2
+    appVersion: 0.0.15
+    created: "2021-07-07T16:53:16.42426-05:00"
+    description: Ingest resources and events from Kubernetes into effx
+    digest: 5fb00fb346aaca2c0b80d963e8b7c549a6fdd07fdf330f28be8f8051935a0024
+    name: cluster-agent
+    type: application
+    urls:
+    - https://github.com/effxhq/cluster-agent/releases/download/v0.0.15/cluster-agent-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
     appVersion: 0.0.11
     created: "2021-07-07T16:06:40.424629-05:00"
     description: Ingest resources and events from Kubernetes into effx
@@ -64,4 +74,4 @@ entries:
     urls:
     - https://github.com/effxhq/charts/releases/download/vcs-connect-0.1.2/vcs-connect-0.1.2.tgz
     version: 0.1.2
-generated: "2021-07-07T16:06:40.424638-05:00"
+generated: "2021-07-07T16:53:16.424273-05:00"
